@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhijith Senthilkumar</title>
+  <style>
+    
+    @font-face {
+      font-family: "Inter";
+      src: url("fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+      font-weight: 400 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Archivo Black";
+      src: url("fonts/ArchivoBlack-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Instrument Serif";
+      src: url("fonts/InstrumentSerif-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Instrument Serif";
+      src: url("fonts/InstrumentSerif-Italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    :root {
+      --black: #090a08;
+      --charcoal: #1f2521;
+      --charcoal-soft: #2a302b;
+      --paper: #f4f4ef;
+      --paper-soft: #ffffff;
+      --washly-yellow: #f2ea4a;
+      --washly-yellow-soft: rgba(242, 234, 74, 0.18);
+      --white: #ffffff;
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.72);
+      --surface: rgba(255, 255, 255, 0.08);
+      --surface-strong: rgba(255, 255, 255, 0.14);
+      --surface-dark: rgba(0, 0, 0, 0.22);
+      --border: rgba(255, 255, 255, 0.16);
+      --border-strong: rgba(242, 234, 74, 0.5);
+      --shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --nav-height: 58px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--charcoal);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .top-nav-shell {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(31, 37, 33, 0.92);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+    }
+
+    .top-nav {
+      max-width: var(--max-width);
+      min-height: var(--nav-height);
+      margin: 0 auto;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 24px;
+      position: relative;
+    }
+
+    .brand,
+    .brand-title,
+    .brand-subtitle {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      transition: color 0.22s ease, background-color 0.22s ease, transform 0.22s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 5px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--washly-yellow);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.22s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus-visible,
+    .nav-link.is-active {
+      outline: none;
+      color: var(--washly-yellow);
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus-visible::after,
+    .nav-link.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      transition: background-color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+      outline: none;
+      background: var(--washly-yellow);
+      border-color: var(--washly-yellow);
+      transform: translateY(-1px);
+    }
+
+    .menu-line {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--white);
+      transition: transform 0.22s ease, opacity 0.22s ease, background-color 0.22s ease;
+    }
+
+    .menu-toggle:hover .menu-line,
+    .menu-toggle:focus-visible .menu-line {
+      background: var(--black);
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    main {
+      padding-top: var(--nav-height);
+    }
+
+    section {
+      scroll-margin-top: calc(var(--nav-height) + 14px);
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 56px 20px;
+    }
+
+    .section-a {
+      background: var(--charcoal);
+      --text: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.72);
+      --surface: rgba(255, 255, 255, 0.08);
+      --surface-strong: rgba(255, 255, 255, 0.14);
+      --surface-dark: rgba(0, 0, 0, 0.22);
+      --border: rgba(255, 255, 255, 0.16);
+      --shadow: 0 20px 55px rgba(0, 0, 0, 0.24);
+    }
+
+    .section-b {
+      background: var(--paper);
+      --text: #1f2521;
+      --text-muted: rgba(31, 37, 33, 0.72);
+      --surface: #ffffff;
+      --surface-strong: #f8f8f3;
+      --surface-dark: #ecece4;
+      --border: rgba(31, 37, 33, 0.12);
+      --shadow: 0 18px 45px rgba(31, 37, 33, 0.12);
+    }
+
+    .section-b h2,
+    .section-b h3,
+    .section-b p,
+    .section-b .detail-value,
+    .section-b .meta-value,
+    .section-b .project-title,
+    .section-b .cert-title,
+    .section-b .form-field label {
+      color: var(--text);
+    }
+
+    .section-b .section-lead,
+    .section-b .body-copy,
+    .section-b .project-subtitle,
+    .section-b .cert-date,
+    .section-b .project-excerpt,
+    .section-b .cert-summary,
+    .section-b .skill-note,
+    .section-b .contact-side-copy,
+    .section-b .detail-label,
+    .section-b .meta-label {
+      color: var(--text-muted);
+    }
+
+    .hero .section-inner {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.86fr) minmax(0, 1.14fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .profile-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 22px;
+      min-width: 0;
+    }
+
+    .profile-image {
+      width: min(100%, 390px);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 34px;
+    }
+
+    .profile-column .hero-name {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .intro-card {
+      padding: 34px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .intro-card .section-heading {
+      margin-bottom: 18px;
+    }
+
+    .bio-copy {
+      color: var(--text-muted);
+      max-width: 72ch;
+      font-size: 1.02rem;
+    }
+
+    .about-links {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .about-links .text-link {
+      width: 100%;
+      justify-content: center;
+      background: var(--surface-dark);
+      border-color: var(--border);
+    }
+
+    .about-link-icon {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      color: currentColor;
+    }
+
+    .about-links .text-link:hover,
+    .about-links .text-link:focus-visible {
+      color: var(--black);
+      background: var(--washly-yellow);
+      border-color: var(--washly-yellow);
+    }
+
+    .about-facts {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .about-fact {
+      display: grid;
+      gap: 6px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+
+    .about-fact-label {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+
+    .about-fact-value {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .skills-heading-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .skill-count-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 8px 18px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--washly-yellow);
+      border: 1px solid var(--washly-yellow);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-family: "Archivo Black", "Inter", system-ui, sans-serif;
+      font-size: clamp(2.6rem, 6vw, 5.3rem);
+      line-height: 0.9;
+      letter-spacing: -0.055em;
+      max-width: 780px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .hero-name {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(3.2rem, 6.9vw, 5.5rem);
+      line-height: 0.86;
+      letter-spacing: -0.045em;
+      text-transform: none;
+      max-width: 100%;
+      color: var(--white);
+    }
+
+    h2 {
+      font-family: "Archivo Black", "Inter", system-ui, sans-serif;
+      font-size: clamp(1.9rem, 3.6vw, 3rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    h3 {
+      font-family: "Archivo Black", "Inter", system-ui, sans-serif;
+      font-size: 1.16rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .section-lead,
+    .body-copy {
+      color: var(--text-muted);
+      max-width: 72ch;
+    }
+
+    .glass-card,
+    .content-card,
+    .project-card,
+    .cert-card,
+    .contact-card,
+    .skills-card,
+    .about-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-pill,
+    .tag,
+    .skill-tag,
+    .level-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text);
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+
+    .tag,
+    .level-badge {
+      background: var(--washly-yellow);
+      border-color: var(--washly-yellow);
+      color: var(--black);
+    }
+
+    .hero-actions,
+    .platform-links,
+    .contact-links,
+    .project-tags,
+    .cert-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button,
+    .text-link,
+    .project-button,
+    .submit-btn,
+    .dialog-link,
+    .close-btn {
+      border: 0;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .button,
+    .text-link,
+    .dialog-link,
+    .close-btn,
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: transform 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+    }
+
+    .button,
+    .submit-btn {
+      color: var(--black);
+      background: var(--washly-yellow);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .text-link,
+    .dialog-link,
+    .close-btn {
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
+    .button:hover,
+    .text-link:hover,
+    .project-button:hover,
+    .submit-btn:hover,
+    .dialog-link:hover,
+    .close-btn:hover,
+    .button:focus-visible,
+    .text-link:focus-visible,
+    .project-button:focus-visible,
+    .submit-btn:focus-visible,
+    .dialog-link:focus-visible,
+    .close-btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .text-link:hover,
+    .dialog-link:hover,
+    .close-btn:hover,
+    .text-link:focus-visible,
+    .dialog-link:focus-visible,
+    .close-btn:focus-visible {
+      color: var(--black);
+      border-color: var(--washly-yellow);
+      background: var(--washly-yellow);
+    }
+
+    .two-column,
+    .skills-layout,
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(310px, 0.95fr);
+      gap: 22px;
+    }
+
+    .about-card,
+    .content-card,
+    .skills-card,
+    .contact-card {
+      padding: 26px;
+    }
+
+    .skill-summary-list {
+      margin-top: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .summary-point {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+    }
+
+    .skill-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .skill-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+
+    .skill-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .skill-name {
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .skill-note {
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .skill-track {
+      position: relative;
+      width: 100%;
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.12);
+      border: 1px solid var(--border);
+    }
+
+    .section-a .skill-track {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .skill-fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0;
+      border-radius: inherit;
+      background: var(--washly-yellow);
+      transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .skill-scale {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 10px;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .skill-preview-a-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .skill-preview-a-card {
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-preview-a-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .skill-preview-a-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      background: var(--washly-yellow);
+      font-weight: 900;
+    }
+
+    .skill-preview-a-kicker {
+      margin-top: 4px;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .skill-preview-a-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .skill-preview-a-item {
+      display: grid;
+      gap: 8px;
+    }
+
+    .skill-preview-a-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .skill-preview-a-name {
+      font-weight: 850;
+      color: var(--text);
+    }
+
+    .skill-preview-a-level {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    .skill-preview-a-bar {
+      height: 11px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface-dark);
+    }
+
+    .skill-preview-a-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--washly-yellow);
+    }
+
+    .skill-preview-a-note {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+
+    .skills-matrix {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .skill-category-card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 18px;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .skill-category-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+    }
+
+    .skill-category-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .skill-category-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .skill-category-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      color: var(--black);
+      background: var(--washly-yellow);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .skill-category-kicker {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .skill-rows {
+      display: grid;
+      gap: 14px;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .skill-row:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .skill-row:last-child {
+      padding-bottom: 0;
+    }
+
+    .skill-label {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 850;
+      line-height: 1.25;
+    }
+
+    .skill-subnote {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 3px;
+      line-height: 1.35;
+    }
+
+    .level-line {
+      position: relative;
+      width: 168px;
+      height: 11px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: rgba(31, 37, 33, 0.12);
+    }
+
+    .level-line-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--washly-yellow);
+    }
+
+    .projects-grid,
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card,
+    .cert-card {
+      overflow: hidden;
+    }
+
+    .project-button {
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      color: inherit;
+      background: transparent;
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .project-header,
+    .cert-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .project-title,
+    .cert-title {
+      font-size: 1.14rem;
+      font-weight: 850;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .project-subtitle,
+    .cert-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .project-excerpt,
+    .cert-summary {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .project-open {
+      color: var(--text);
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+
+    .cert-body {
+      padding: 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .inline-github-icon {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+      color: currentColor;
+    }
+
+    .cert-title-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .cert-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      color: var(--black);
+      background: var(--washly-yellow);
+      box-shadow: 0 12px 24px rgba(31, 37, 33, 0.12);
+    }
+
+    .cert-icon svg {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+
+    .cert-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--black);
+      background: var(--washly-yellow);
+      border: 1px solid var(--washly-yellow);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .contact-layout-single {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-card-wide {
+      width: 100%;
+      max-width: none;
+    }
+
+    .contact-direct-block {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-direct-links {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .contact-direct-links .text-link {
+      width: 100%;
+      justify-content: center;
+      background: var(--surface-dark);
+      border-color: var(--border);
+    }
+
+    .contact-direct-links .text-link:hover,
+    .contact-direct-links .text-link:focus-visible {
+      color: var(--black);
+      background: var(--washly-yellow);
+      border-color: var(--washly-yellow);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-field label {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+      padding: 14px 16px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--washly-yellow);
+      box-shadow: 0 0 0 4px rgba(242, 234, 74, 0.18);
+      background: var(--surface);
+    }
+
+    .form-textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .contact-side-copy {
+      color: var(--text-muted);
+      margin: 12px 0 18px;
+    }
+
+    .contact-detail-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .contact-detail-item {
+      display: grid;
+      gap: 6px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+
+    .detail-label,
+    .meta-label {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+    }
+
+    dialog {
+      width: min(760px, calc(100vw - 24px));
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      background: var(--charcoal);
+      color: var(--white);
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .dialog-shell {
+      padding: 28px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .dialog-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .dialog-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .dialog-panel {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .dialog-panel h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: var(--washly-yellow);
+    }
+
+    .dialog-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .footer-note {
+      background: var(--charcoal);
+      margin: 0;
+      padding: 16px 20px 40px;
+      color: rgba(255, 255, 255, 0.64);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .intro-grid,
+      .two-column,
+      .skills-layout,
+      .contact-layout,
+      .projects-grid,
+      .cert-grid,
+      .skills-matrix,
+      .skill-preview-a-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-column {
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-image {
+        width: min(72vw, 340px);
+      }
+
+      .intro-card {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 860px) {
+      :root {
+        --nav-height: 58px;
+      }
+
+      .top-nav {
+        padding: 8px 16px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 16px;
+        width: min(320px, calc(100vw - 32px));
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 12px;
+        border-radius: 18px;
+        background: rgba(31, 37, 33, 0.98);
+        border: 1px solid rgba(204, 201, 220, 0.14);
+        box-shadow: 0 20px 55px rgba(0, 0, 0, 0.34);
+        transform: translateY(-8px) scale(0.98);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.22s ease, opacity 0.22s ease;
+      }
+
+      .nav-links.is-open {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-link {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+      }
+
+      .nav-link::after {
+        display: none;
+      }
+
+      .nav-link:hover,
+      .nav-link:focus-visible,
+      .nav-link.is-active {
+        background: rgba(255, 255, 255, 0.08);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section-inner {
+        padding: 42px 16px;
+      }
+
+      .hero .section-inner {
+        padding-top: 44px;
+        padding-bottom: 44px;
+      }
+
+      .intro-grid {
+        gap: 34px;
+      }
+
+      .profile-image {
+        width: min(68vw, 270px);
+        border-radius: 24px;
+      }
+
+      .intro-card,
+      .skills-card,
+      .contact-card,
+      .dialog-shell,
+      .skill-category-card,
+      .skill-preview-a-card {
+        padding: 22px;
+      }
+
+      .about-links,
+      .about-facts {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 11vw, 3.45rem);
+      }
+
+      .hero-name {
+        font-size: clamp(3rem, 14vw, 4.2rem);
+      }
+
+      .project-button,
+      .cert-body {
+        padding: 18px;
+      }
+
+      .contact-direct-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .skill-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .level-line {
+        width: 100%;
+      }
+
+      .skill-preview-a-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-nav-shell" aria-label="Primary navigation">
+    <nav class="top-nav">
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <div class="nav-links" id="primary-navigation">
+        <a class="nav-link" href="#home">About Me</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#certifications">Certifications</a>
+        <a class="nav-link" href="#contact">Contact Me</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-a" id="home" aria-label="Portfolio introduction and about me">
+      <div class="section-inner">
+        <div class="intro-grid">
+          <aside class="profile-column" aria-label="Profile photo and name">
+            <img class="profile-image" src="img/profile_picture.png" alt="Portrait of Abhijith Senthilkumar" />
+            <h1 class="hero-name">Abhijith Senthilkumar</h1>
+          </aside>
+
+          <article class="intro-card">
+            <div class="section-heading">
+              <h2>About Me</h2>
+              <p class="bio-copy">Master's student in Data Science at the University of Luxembourg with hands-on experience in machine learning, data analysis, time-series forecasting, NLP, and predictive modelling. I build end-to-end data science projects that connect data preprocessing, feature engineering, model development, evaluation, and dashboarding, with current interests in forecasting, credit risk analytics, and research-grade time-series imputation.</p>
+            </div>
+
+            <div class="about-links" aria-label="Professional links">
+              <a class="text-link" href="https://www.linkedin.com/in/abhijith-senthilkumar/" target="_blank" rel="noreferrer">
+                <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.28 8h4.43v14H.28V8Zm7.21 0h4.24v1.91h.06c.59-1.12 2.03-2.3 4.18-2.3 4.47 0 5.29 2.94 5.29 6.76V22h-4.42v-6.75c0-1.61-.03-3.68-2.24-3.68-2.24 0-2.58 1.75-2.58 3.56V22H7.49V8Z"/>
+                </svg>
+                LinkedIn
+              </a>
+
+              <a class="text-link" href="https://github.com/abhi-jith23" target="_blank" rel="noreferrer">
+                <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+                </svg>
+                GitHub
+              </a>
+
+              <a class="text-link" href="mailto:abhijith.unilu@gmail.com">
+                <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M4 6h16v12H4V6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Email
+              </a>
+
+              <a class="text-link" href="resume.pdf" download>
+                <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M14 3v5h5M8.5 13h7M8.5 17h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Resume
+              </a>
+            </div>
+
+            <div class="about-facts">
+              <div class="about-fact">
+                <span class="about-fact-label">Current Role</span>
+                <span class="about-fact-value">MSc Data Science Student</span>
+              </div>
+              <div class="about-fact">
+                <span class="about-fact-label">Current Focus</span>
+                <span class="about-fact-value">ML, Forecasting, NLP, Credit Risk Analytics</span>
+              </div>
+              <div class="about-fact">
+                <span class="about-fact-label">Location</span>
+                <span class="about-fact-value">Luxembourg, LU</span>
+              </div>
+              <div class="about-fact">
+                <span class="about-fact-label">Availability</span>
+                <span class="about-fact-value">Open to internships, thesis work, and data science roles</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section-b">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div class="skills-heading-row">
+            <h2>Skills</h2>
+          </div>
+          <p class="section-lead">I work across the full data science workflow: understanding the problem, preparing data, building features, training and evaluating models, and turning results into clear reports or dashboards.</p>
+        </div>
+
+        <div class="skill-preview-a-grid" aria-label="Technical skills grouped by category">
+          <article class="skill-preview-a-card">
+            <div class="skill-preview-a-head">
+              <span class="skill-preview-a-icon" aria-hidden="true">&lt;/&gt;</span>
+              <div>
+                <h3>Programming &amp; Databases</h3>
+                <p class="skill-preview-a-kicker">Core technical stack</p>
+              </div>
+            </div>
+
+            <div class="skill-preview-a-list">
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Python</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 92%;"></div></div>
+                <p class="skill-preview-a-note">Primary language for modelling, analysis, and dashboards.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">SQL</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
+                <p class="skill-preview-a-note">KPI marts, reporting views, joins, and analytics queries.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">R</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
+                <p class="skill-preview-a-note">Statistics, visualization, and coursework-based analysis.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">DuckDB</span><span class="skill-preview-a-level">Working</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 74%;"></div></div>
+                <p class="skill-preview-a-note">Local analytics warehouse and SQL-backed workflows.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">MongoDB / Neo4j</span><span class="skill-preview-a-level">Working</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 72%;"></div></div>
+                <p class="skill-preview-a-note">NoSQL databases and graph-oriented data modelling.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="skill-preview-a-card">
+            <div class="skill-preview-a-head">
+              <span class="skill-preview-a-icon" aria-hidden="true">AI</span>
+              <div>
+                <h3>Machine Learning &amp; AI</h3>
+                <p class="skill-preview-a-kicker">Predictive modelling</p>
+              </div>
+            </div>
+
+            <div class="skill-preview-a-list">
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Scikit-learn</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 90%;"></div></div>
+                <p class="skill-preview-a-note">Classical ML, evaluation, preprocessing, and pipelines.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">PyTorch</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 86%;"></div></div>
+                <p class="skill-preview-a-note">Deep learning models, sequence models, and research workflows.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">XGBoost / LightGBM</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
+                <p class="skill-preview-a-note">Boosted-tree baselines and tabular modelling.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">TensorFlow</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
+                <p class="skill-preview-a-note">Deep learning framework familiarity and applied coursework.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">NLP / Transformers</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
+                <p class="skill-preview-a-note">FinBERT, Hugging Face workflows, and sentiment modelling.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="skill-preview-a-card">
+            <div class="skill-preview-a-head">
+              <span class="skill-preview-a-icon" aria-hidden="true">∑</span>
+              <div>
+                <h3>Statistics, Forecasting &amp; Modelling</h3>
+                <p class="skill-preview-a-kicker">Quantitative methods</p>
+              </div>
+            </div>
+
+            <div class="skill-preview-a-list">
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Probability &amp; Statistics</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 90%;"></div></div>
+                <p class="skill-preview-a-note">Core statistical reasoning and model interpretation.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Feature Engineering / PCA</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
+                <p class="skill-preview-a-note">Lag, rolling, calendar, exogenous features, and dimensionality reduction.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Forecast Evaluation / Backtesting</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 86%;"></div></div>
+                <p class="skill-preview-a-note">Time-based validation, leakage control, and forecast comparison.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">ARIMA / ARIMAX / Holt-Winters</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
+                <p class="skill-preview-a-note">Classical time-series forecasting and validation-based tuning.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">LSTM / GRU</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
+                <p class="skill-preview-a-note">Deep sequence models for time-series forecasting workflows.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="skill-preview-a-card">
+            <div class="skill-preview-a-head">
+              <span class="skill-preview-a-icon" aria-hidden="true">↗</span>
+              <div>
+                <h3>Data Analysis &amp; Visualization</h3>
+                <p class="skill-preview-a-kicker">Exploration to insight</p>
+              </div>
+            </div>
+
+            <div class="skill-preview-a-list">
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Pandas / NumPy</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 92%;"></div></div>
+                <p class="skill-preview-a-note">Data cleaning, transformation, aggregation, and analysis.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Matplotlib / Seaborn</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
+                <p class="skill-preview-a-note">Exploratory plots, diagnostics, and visual reporting.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Plotly / ggplot2</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
+                <p class="skill-preview-a-note">Interactive charts and grammar-of-graphics style visualization.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">SciPy / Tidyverse</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
+                <p class="skill-preview-a-note">Scientific computing and R-based data workflows.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Data Scraping / Data Storytelling</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
+                <p class="skill-preview-a-note">Collecting inputs and communicating insights clearly.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="skill-preview-a-card">
+            <div class="skill-preview-a-head">
+              <span class="skill-preview-a-icon" aria-hidden="true">{ }</span>
+              <div>
+                <h3>Development &amp; Deployment</h3>
+                <p class="skill-preview-a-kicker">Building usable outputs</p>
+              </div>
+            </div>
+
+            <div class="skill-preview-a-list">
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Git / GitHub</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 90%;"></div></div>
+                <p class="skill-preview-a-note">Version control, project organization, and reproducibility.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Streamlit</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
+                <p class="skill-preview-a-note">Interactive data science apps and project dashboards.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Docker</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
+                <p class="skill-preview-a-note">Containerized projects and reproducible environments.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Flask / FastAPI</span><span class="skill-preview-a-level">Working</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 74%;"></div></div>
+                <p class="skill-preview-a-note">Backend APIs and lightweight deployment foundations.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Jupyter / Quarto / Nix</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
+                <p class="skill-preview-a-note">Notebooks, reproducible reports, and development environments.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="skill-preview-a-card">
+            <div class="skill-preview-a-head">
+              <span class="skill-preview-a-icon" aria-hidden="true">KPI</span>
+              <div>
+                <h3>Analytics, BI &amp; Reporting</h3>
+                <p class="skill-preview-a-kicker">Business-facing analytics</p>
+              </div>
+            </div>
+
+            <div class="skill-preview-a-list">
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">KPI Reporting</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 90%;"></div></div>
+                <p class="skill-preview-a-note">Structured metrics for monitoring and decision support.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Dashboarding</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
+                <p class="skill-preview-a-note">Interactive reporting with Streamlit and BI-style layouts.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Data Quality Checks</span><span class="skill-preview-a-level">Advanced</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
+                <p class="skill-preview-a-note">Validation rules, consistency checks, and audit-friendly outputs.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Power BI</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
+                <p class="skill-preview-a-note">Business intelligence dashboards and stakeholder reporting.</p>
+              </div>
+
+              <div class="skill-preview-a-item">
+                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Excel</span><span class="skill-preview-a-level">Strong</span></div>
+                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
+                <p class="skill-preview-a-note">Analysis, reporting, and practical business workflows.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section-a">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2>Projects</h2>
+          <p class="section-lead">Selected projects showing practical work in forecasting, credit risk analytics, business intelligence, NLP, and applied machine learning.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <button class="project-button" type="button" data-dialog-target="project-dialog-1">
+              <div class="project-header">
+                <div>
+                  <p class="project-title">Stocks Next-Day Returns Prediction</p>
+                  <p class="project-subtitle">Time-Series Forecasting | Oct 2025 – Mar 2026</p>
+                </div>
+                <span class="tag">ML Forecasting</span>
+              </div>
+              <p class="project-excerpt">End-to-end forecasting pipeline for next-day AAPL log returns using time-based splitting, engineered features, PCA, and LSTM-to-GRU modelling.</p>
+              <div class="project-tags"><span class="skill-tag">Python</span><span class="skill-tag">PyTorch</span><span class="skill-tag">Optuna</span></div>
+              <span class="project-open">Click to view details</span>
+            </button>
+          </article>
+
+          <article class="project-card">
+            <button class="project-button" type="button" data-dialog-target="project-dialog-2">
+              <div class="project-header">
+                <div>
+                  <p class="project-title">Credit Risk BI &amp; Decisioning Dashboard</p>
+                  <p class="project-subtitle">Analytics Dashboard | Nov 2025 – Feb 2026</p>
+                </div>
+                <span class="tag">Analytics & BI</span>
+              </div>
+              <p class="project-excerpt">Credit risk analytics system combining ingestion, data-quality checks, DuckDB warehousing, PD modelling, SQL KPI marts, and Streamlit dashboards.</p>
+              <div class="project-tags"><span class="skill-tag">Streamlit</span><span class="skill-tag">DuckDB</span><span class="skill-tag">Docker</span></div>
+              <span class="project-open">Click to view details</span>
+            </button>
+          </article>
+
+          <article class="project-card">
+            <button class="project-button" type="button" data-dialog-target="project-dialog-3">
+              <div class="project-header">
+                <div>
+                  <p class="project-title">Walmart Weekly Sales Forecasting</p>
+                  <p class="project-subtitle">Retail Forecasting | Dec 2025 – Feb 2026</p>
+                </div>
+                <span class="tag">Analytics & Forecasting</span>
+              </div>
+              <p class="project-excerpt">Retail forecasting workflow comparing department-level forecasting against aggregate-forecast-deaggregate strategy using weekly Walmart sales data.</p>
+              <div class="project-tags"><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span></div>
+              <span class="project-open">Click to view details</span>
+            </button>
+          </article>
+
+          <article class="project-card">
+            <button class="project-button" type="button" data-dialog-target="project-dialog-4">
+              <div class="project-header">
+                <div>
+                  <p class="project-title">NVDA News Sentiment Portfolio</p>
+                  <p class="project-subtitle">Financial NLP | Oct 2025 – Dec 2025</p>
+                </div>
+                <span class="tag">NLP</span>
+              </div>
+              <p class="project-excerpt">Pipeline for collecting, de-duplicating, classifying, and aligning NVDA news sentiment to next-day and next-3-day stock return analysis.</p>
+              <div class="project-tags"><span class="skill-tag">FinBERT</span><span class="skill-tag">NewsAPI</span><span class="skill-tag">yfinance</span></div>
+              <span class="project-open">Click to view details</span>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" class="section-b">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2>Certifications</h2>
+          <p class="section-lead">Certifications that support my formal and project-based work in machine learning and data science.</p>
+        </div>
+
+        <div class="cert-grid">
+          <article class="cert-card">
+            <div class="cert-body">
+              <div class="cert-header">
+                <div class="cert-title-wrap">
+                  <span class="cert-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M7 8.5a3 3 0 1 1 3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M17 8.5a3 3 0 1 0-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M7 15.5a3 3 0 1 0 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M17 15.5a3 3 0 1 1-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="cert-title">Machine Learning Specialization</p>
+                    <p class="cert-date">Stanford University / Coursera</p>
+                  </div>
+                </div>
+              </div>
+              <p class="cert-summary">Covers supervised learning, unsupervised learning, model evaluation, neural networks, and practical machine learning workflows.</p>
+              <div class="cert-links">
+                <a class="text-link" href="https://drive.google.com/file/d/1BipL56-pa_feGGlVp4iWy1qJ16FpW_Dh/view" target="_blank" rel="noreferrer">View Certification</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cert-card">
+            <div class="cert-body">
+              <div class="cert-header">
+                <div class="cert-title-wrap">
+                  <span class="cert-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                      <path d="M5 7c0-1.66 3.13-3 7-3s7 1.34 7 3-3.13 3-7 3-7-1.34-7-3Z" stroke="currentColor" stroke-width="2"/>
+                      <path d="M5 7v5c0 1.66 3.13 3 7 3s7-1.34 7-3V7" stroke="currentColor" stroke-width="2"/>
+                      <path d="M5 12v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5" stroke="currentColor" stroke-width="2"/>
+                      <path d="M9 13.5h6M9 18.5h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="cert-title">IBM Data Science Specialization</p>
+                    <p class="cert-date">IBM / Coursera</p>
+                  </div>
+                </div>
+              </div>
+              <p class="cert-summary">Applied data science program covering Python, analysis workflows, data visualization, machine learning, and project-based data science practice.</p>
+              <div class="cert-links">
+                <a class="text-link" href="https://drive.google.com/file/d/1f6VuUf7PlmUMuMwyXaSmr3AKzU3gwvSH/view" target="_blank" rel="noreferrer">View Certification</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-a">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2>Contact Me</h2>
+        </div>
+
+        <div class="contact-layout contact-layout-single">
+          <article class="contact-card contact-card-wide">
+            <h3>Send a Message</h3>
+
+            <form class="contact-form" id="contact-form" style="margin-top: 20px;">
+              <div class="form-field"><label for="contact-name">Name</label><input class="form-input" id="contact-name" name="name" type="text" placeholder="Enter your name" /></div>
+              <div class="form-field"><label for="contact-email">Email</label><input class="form-input" id="contact-email" name="email" type="email" placeholder="Enter your email" /></div>
+              <div class="form-field"><label for="contact-message">Message</label><textarea class="form-textarea" id="contact-message" name="message" placeholder="Write your message here"></textarea></div>
+              <button class="submit-btn" type="submit">Submit</button>
+            </form>
+
+            <div class="contact-direct-block">
+              <p class="contact-side-copy">For direct contact or to review my work, use the links below.</p>
+
+              <div class="contact-direct-links" aria-label="Direct contact links">
+                <a class="text-link" href="mailto:abhijith.unilu@gmail.com">
+                  <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M4 6h16v12H4V6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Email
+                </a>
+
+                <a class="text-link" href="https://www.linkedin.com/in/abhijith-senthilkumar/" target="_blank" rel="noreferrer">
+                  <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.28 8h4.43v14H.28V8Zm7.21 0h4.24v1.91h.06c.59-1.12 2.03-2.3 4.18-2.3 4.47 0 5.29 2.94 5.29 6.76V22h-4.42v-6.75c0-1.61-.03-3.68-2.24-3.68-2.24 0-2.58 1.75-2.58 3.56V22H7.49V8Z"/>
+                  </svg>
+                  LinkedIn
+                </a>
+
+                <a class="text-link" href="https://github.com/abhi-jith23" target="_blank" rel="noreferrer">
+                  <svg class="about-link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+                  </svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  <p class="footer-note">© Abhijith Senthilkumar.</p>
+
+  <dialog id="project-dialog-1" aria-labelledby="project-dialog-title-1">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <div><h3 id="project-dialog-title-1">Stocks Next-Day Returns Prediction</h3><div class="dialog-meta"><span class="tag">Time Series</span><span class="tag">Oct 2025 – Mar 2026</span></div></div>
+      </div>
+      <div class="dialog-grid">
+        <div class="dialog-panel"><h4>Objective</h4><p>Predict next-day AAPL log returns using daily market data while avoiding data leakage and preserving a realistic time-based modelling setup.</p></div>
+        <div class="dialog-panel"><h4>Approach</h4><p>Built an end-to-end pipeline using yfinance data from 2013–2026, engineered endogenous, exogenous, calendar, lag, and rolling features, then applied train-only scaling and PCA for dimensionality reduction.</p></div>
+        <div class="dialog-panel"><h4>Results</h4><p>Benchmarked against Naive, ARIMA, ARIMAX, and XGBoost baselines, then trained an LSTM-to-GRU model with Optuna-based hyperparameter search and structured evaluation reporting.</p></div>
+        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, PyTorch, scikit-learn, yfinance, Optuna, PCA, LSTM, GRU.</p></div>
+        <div class="dialog-panel">
+          <h4>Project Link</h4>
+          <a class="dialog-link" href="https://github.com/abhi-jith23/StockReturnPrediction" target="_blank" rel="noreferrer">
+            <svg class="inline-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+            </svg>
+            View Project
+          </a>
+        </div>
+      </div>
+      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
+    </div>
+  </dialog>
+
+  <dialog id="project-dialog-2" aria-labelledby="project-dialog-title-2">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <div><h3 id="project-dialog-title-2">Credit Risk BI &amp; Decisioning Dashboard</h3><div class="dialog-meta"><span class="tag">BI Dashboard</span><span class="tag">Nov 2025 – Feb 2026</span></div></div>
+      </div>
+      <div class="dialog-grid">
+        <div class="dialog-panel"><h4>Objective</h4><p>Create a practical credit risk analytics tool for underwriting, portfolio monitoring, probability-of-default scoring, and decision policy simulation.</p></div>
+        <div class="dialog-panel"><h4>Approach</h4><p>Designed a workflow from ingestion to data-quality contracts, DuckDB warehousing, PD modelling, SQL KPI marts, and Streamlit dashboards for model and business reporting.</p></div>
+        <div class="dialog-panel"><h4>Results</h4><p>Implemented model diagnostics including ROC/PR, calibration, Brier score, threshold analysis, and a simulator that converts PD into approve, review, and decline decisions under business constraints.</p></div>
+        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, Streamlit, scikit-learn, DuckDB, SQL, Docker.</p></div>
+        <div class="dialog-panel">
+          <h4>Project Link</h4>
+          <a class="dialog-link" href="https://github.com/abhi-jith23/Credit-Risk-Dashboard" target="_blank" rel="noreferrer">
+            <svg class="inline-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+            </svg>
+            View Project
+          </a>
+        </div>
+      </div>
+      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
+    </div>
+  </dialog>
+
+  <dialog id="project-dialog-3" aria-labelledby="project-dialog-title-3">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <div><h3 id="project-dialog-title-3">Walmart Weekly Sales Forecasting</h3><div class="dialog-meta"><span class="tag">Retail Forecasting</span><span class="tag">Dec 2025 – Feb 2026</span></div></div>
+      </div>
+      <div class="dialog-grid">
+        <div class="dialog-panel"><h4>Objective</h4><p>Forecast weekly Walmart sales and compare department-level forecasting against an aggregate-forecast-deaggregate strategy.</p></div>
+        <div class="dialog-panel"><h4>Approach</h4><p>Implemented additive Holt-Winters forecasting from scratch with validation-based tuning, then evaluated performance across store and department time series.</p></div>
+        <div class="dialog-panel"><h4>Results</h4><p>Compared models using MAE, RMSE, and WAPE, and modeled a rebate-contract scenario using horizon-2 forecasts and rolling bias correction to study KPI and accuracy trade-offs.</p></div>
+        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, Pandas, NumPy, Matplotlib, Jupyter Notebook.</p></div>
+        <div class="dialog-panel">
+          <h4>Project Link</h4>
+          <a class="dialog-link" href="https://github.com/abhi-jith23/Time-Series-Forecast-for-Walmart-Data" target="_blank" rel="noreferrer">
+            <svg class="inline-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+            </svg>
+            View Project
+          </a>
+        </div>
+      </div>
+      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
+    </div>
+  </dialog>
+
+  <dialog id="project-dialog-4" aria-labelledby="project-dialog-title-4">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <div><h3 id="project-dialog-title-4">NVDA News Sentiment Portfolio</h3><div class="dialog-meta"><span class="tag">Financial NLP</span><span class="tag">Oct 2025 – Dec 2025</span></div></div>
+      </div>
+      <div class="dialog-grid">
+        <div class="dialog-panel"><h4>Objective</h4><p>Analyze whether NVDA news sentiment can be aligned with next-day and next-3-day stock returns for downstream financial analysis.</p></div>
+        <div class="dialog-panel"><h4>Approach</h4><p>Collected and de-duplicated headlines from NewsAPI and yfinance, fine-tuned FinBERT on manually labelled headlines, and aligned after-hours news to the next NASDAQ trading day.</p></div>
+        <div class="dialog-panel"><h4>Results</h4><p>Created daily sentiment features including mean sentiment and tail-negativity, then mapped them to returns and abnormal returns for analysis.</p></div>
+        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, Hugging Face Transformers, FinBERT, NewsAPI, yfinance.</p></div>
+        <div class="dialog-panel">
+          <h4>Project Link</h4>
+          <a class="dialog-link" href="https://github.com/abhi-jith23/Stock-Portfolio-based-on-News-Sentiment" target="_blank" rel="noreferrer">
+            <svg class="inline-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+            </svg>
+            View Project
+          </a>
+        </div>
+      </div>
+      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
+    </div>
+  </dialog>
+
+  <script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('main section[id]');
+    const skillItems = document.querySelectorAll('.skill-item');
+    const dialogTriggers = document.querySelectorAll('[data-dialog-target]');
+    const closeDialogButtons = document.querySelectorAll('[data-close-dialog]');
+    const contactForm = document.getElementById('contact-form');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const primaryNavigation = document.getElementById('primary-navigation');
+
+    function setMenuState(isOpen) {
+      if (!menuToggle || !primaryNavigation) return;
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      primaryNavigation.classList.toggle('is-open', isOpen);
+    }
+
+    skillItems.forEach((item) => {
+      const fill = item.querySelector('.skill-fill');
+      const level = item.dataset.level;
+      if (fill && level) {
+        requestAnimationFrame(() => {
+          fill.style.width = `${level}%`;
+        });
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
+        });
+      });
+    }, {
+      rootMargin: '-35% 0px -45% 0px',
+      threshold: 0.1
+    });
+
+    sections.forEach((section) => observer.observe(section));
+
+    if (menuToggle && primaryNavigation) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+        setMenuState(!isOpen);
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          setMenuState(false);
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        const clickedInsideNav = event.target.closest('.top-nav');
+        if (!clickedInsideNav) setMenuState(false);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setMenuState(false);
+      });
+    }
+
+    dialogTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const dialogId = trigger.getAttribute('data-dialog-target');
+        const dialog = document.getElementById(dialogId);
+        if (dialog) dialog.showModal();
+      });
+    });
+
+    closeDialogButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        button.closest('dialog')?.close();
+      });
+    });
+
+    document.querySelectorAll('dialog').forEach((dialog) => {
+      dialog.addEventListener('click', (event) => {
+        const rect = dialog.getBoundingClientRect();
+        const clickedInside = rect.top <= event.clientY && event.clientY <= rect.top + rect.height && rect.left <= event.clientX && event.clientX <= rect.left + rect.width;
+        if (!clickedInside) dialog.close();
+      });
+    });
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        alert('This form is ready visually. Connect it later to your preferred form handler or email service.');
+        contactForm.reset();
+      });
+    }
+  </script>
+</body>
+</html>
