@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abhijith Senthilkumar</title>
   <style>
-    
+
     @font-face {
       font-family: "Inter";
       src: url("fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
@@ -336,6 +336,15 @@
       font-size: 1.02rem;
     }
 
+    .bio-copy + .bio-copy {
+      margin-top: 14px;
+    }
+
+    .bio-copy strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
     .about-links {
       margin-top: 28px;
       display: grid;
@@ -530,6 +539,26 @@
       color: var(--black);
     }
 
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 850;
+      color: var(--black);
+      background: var(--washly-yellow);
+      border: 1px solid var(--washly-yellow);
+    }
+
+    .stat-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     .hero-actions,
     .platform-links,
     .contact-links,
@@ -637,204 +666,41 @@
       color: var(--text);
     }
 
-    .skill-grid {
+    /* ---------- Skills: static 3-column grid, no level bars ---------- */
+
+    .skills-matrix-grid {
       display: grid;
-      gap: 14px;
-    }
-
-    .skill-item {
-      padding: 18px;
-      border-radius: 18px;
-      background: var(--surface-strong);
-      border: 1px solid var(--border);
-    }
-
-    .skill-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .skill-name {
-      font-weight: 800;
-      font-size: 1rem;
-    }
-
-    .skill-note {
-      margin-top: 10px;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-    }
-
-    .skill-track {
-      position: relative;
-      width: 100%;
-      height: 14px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: rgba(0, 0, 0, 0.12);
-      border: 1px solid var(--border);
-    }
-
-    .section-a .skill-track {
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .skill-fill {
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 0;
-      border-radius: inherit;
-      background: var(--washly-yellow);
-      transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-
-    .skill-scale {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: 10px;
-      color: var(--text-muted);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .skill-preview-a-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .skill-preview-a-card {
+    .skill-cat-card {
       padding: 24px;
-      border-radius: var(--radius-lg);
       border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
       background: var(--surface);
       box-shadow: var(--shadow);
-    }
-
-    .skill-preview-a-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .skill-preview-a-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 13px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--black);
-      background: var(--washly-yellow);
-      font-weight: 900;
-    }
-
-    .skill-preview-a-kicker {
-      margin-top: 4px;
-      color: var(--text-muted);
-      font-size: 0.76rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .skill-preview-a-list {
       display: grid;
       gap: 16px;
+      align-content: start;
+      transition: transform 0.22s ease, border-color 0.22s ease;
     }
 
-    .skill-preview-a-item {
-      display: grid;
-      gap: 8px;
-    }
-
-    .skill-preview-a-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: baseline;
-    }
-
-    .skill-preview-a-name {
-      font-weight: 850;
-      color: var(--text);
-    }
-
-    .skill-preview-a-level {
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      white-space: nowrap;
-    }
-
-    .skill-preview-a-bar {
-      height: 11px;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: var(--surface-dark);
-    }
-
-    .skill-preview-a-fill {
-      height: 100%;
-      border-radius: inherit;
-      background: var(--washly-yellow);
-    }
-
-    .skill-preview-a-note {
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      line-height: 1.35;
-    }
-
-    .skills-matrix {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .skill-category-card {
-      padding: 24px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      box-shadow: var(--shadow);
-      display: grid;
-      gap: 18px;
-      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .skill-category-card:hover {
+    .skill-cat-card:hover {
       transform: translateY(-3px);
       border-color: var(--border-strong);
     }
 
-    .skill-category-head {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .skill-category-title-wrap {
+    .skill-cat-head {
       display: flex;
       align-items: center;
-      gap: 11px;
-      min-width: 0;
+      gap: 12px;
     }
 
-    .skill-category-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 12px;
+    .skill-cat-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 13px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -843,93 +709,48 @@
       background: var(--washly-yellow);
       font-size: 0.8rem;
       font-weight: 900;
-      letter-spacing: -0.04em;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
     }
 
-    .skill-category-kicker {
+    .skill-cat-kicker {
+      margin-top: 3px;
       color: var(--text-muted);
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-top: 5px;
     }
 
-    .skill-rows {
-      display: grid;
-      gap: 14px;
+    .skill-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
-    .skill-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+    .skill-chip {
+      display: inline-flex;
       align-items: center;
-      gap: 16px;
-      padding: 12px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .skill-row:first-child {
-      border-top: 0;
-      padding-top: 0;
-    }
-
-    .skill-row:last-child {
-      padding-bottom: 0;
-    }
-
-    .skill-label {
-      color: var(--text);
-      font-size: 0.95rem;
-      font-weight: 850;
-      line-height: 1.25;
-    }
-
-    .skill-subnote {
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      margin-top: 3px;
-      line-height: 1.35;
-    }
-
-    .level-line {
-      position: relative;
-      width: 168px;
-      height: 11px;
+      padding: 7px 12px;
       border-radius: 999px;
-      overflow: hidden;
+      font-size: 0.84rem;
+      font-weight: 750;
+      color: var(--text);
+      background: var(--surface-strong);
       border: 1px solid var(--border);
-      background: rgba(31, 37, 33, 0.12);
     }
 
-    .level-line-fill {
-      display: block;
-      height: 100%;
-      border-radius: inherit;
-      background: var(--washly-yellow);
-    }
+    /* ---------- Projects: accordion-style cards ---------- */
 
-    .projects-grid,
-    .cert-grid {
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .project-card,
-    .cert-card {
+    .project-card {
       overflow: hidden;
-    }
-
-    .project-button {
-      width: 100%;
-      height: 100%;
-      text-align: left;
-      color: inherit;
-      background: transparent;
       padding: 22px;
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 16px;
     }
 
@@ -961,10 +782,123 @@
       font-size: 0.95rem;
     }
 
-    .project-open {
+    .project-card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .project-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
       color: var(--text);
+      padding: 11px 15px;
+      border-radius: 14px;
       font-weight: 800;
       font-size: 0.92rem;
+      cursor: pointer;
+      transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+    }
+
+    .project-toggle:hover,
+    .project-toggle:focus-visible {
+      outline: none;
+      color: var(--black);
+      background: var(--washly-yellow);
+      border-color: var(--washly-yellow);
+    }
+
+    .project-toggle-icon {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
+      transition: transform 0.22s ease;
+    }
+
+    .project-card.is-open .project-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .project-view-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      padding: 11px 15px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      transition: background-color 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+    }
+
+    .project-view-link:hover,
+    .project-view-link:focus-visible {
+      outline: none;
+      color: var(--black);
+      background: var(--washly-yellow);
+      border-color: var(--washly-yellow);
+    }
+
+    .project-view-link svg {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
+    }
+
+    .project-details {
+      display: grid;
+      gap: 14px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.28s ease, opacity 0.22s ease, margin-top 0.28s ease;
+    }
+
+    .project-card.is-open .project-details {
+      max-height: 1200px;
+      opacity: 1;
+      margin-top: 4px;
+    }
+
+    .project-detail-block {
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+    }
+
+    .project-detail-block h4 {
+      margin: 0 0 8px;
+      font-size: 0.92rem;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .section-a .project-detail-block h4 {
+      color: var(--washly-yellow);
+    }
+
+    .project-detail-block p {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .cert-card {
+      overflow: hidden;
     }
 
     .cert-body {
@@ -1130,67 +1064,6 @@
       font-weight: 800;
     }
 
-    dialog {
-      width: min(760px, calc(100vw - 24px));
-      padding: 0;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 24px;
-      background: var(--charcoal);
-      color: var(--white);
-      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
-    }
-
-    dialog::backdrop {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-    }
-
-    .dialog-shell {
-      padding: 28px;
-      display: grid;
-      gap: 20px;
-    }
-
-    .dialog-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 18px;
-    }
-
-    .dialog-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .dialog-grid {
-      display: grid;
-      gap: 16px;
-    }
-
-    .dialog-panel {
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-    }
-
-    .dialog-panel h4 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-      color: var(--washly-yellow);
-    }
-
-    .dialog-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: flex-end;
-    }
-
     .footer-note {
       background: var(--charcoal);
       margin: 0;
@@ -1206,10 +1079,12 @@
       .skills-layout,
       .contact-layout,
       .projects-grid,
-      .cert-grid,
-      .skills-matrix,
-      .skill-preview-a-grid {
+      .cert-grid {
         grid-template-columns: 1fr;
+      }
+
+      .skills-matrix-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .profile-column {
@@ -1304,10 +1179,12 @@
       .intro-card,
       .skills-card,
       .contact-card,
-      .dialog-shell,
-      .skill-category-card,
-      .skill-preview-a-card {
+      .skill-cat-card {
         padding: 22px;
+      }
+
+      .skills-matrix-grid {
+        grid-template-columns: 1fr;
       }
 
       .about-links,
@@ -1323,7 +1200,7 @@
         font-size: clamp(3rem, 14vw, 4.2rem);
       }
 
-      .project-button,
+      .project-card,
       .cert-body {
         padding: 18px;
       }
@@ -1331,22 +1208,10 @@
       .contact-direct-links {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (max-width: 480px) {
-      .skill-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .level-line {
-        width: 100%;
-      }
-
-      .skill-preview-a-top {
-        align-items: flex-start;
+      .project-card-actions {
         flex-direction: column;
-        gap: 4px;
+        align-items: stretch;
       }
     }
   </style>
@@ -1383,7 +1248,9 @@
           <article class="intro-card">
             <div class="section-heading">
               <h2>About Me</h2>
-              <p class="bio-copy">Master's student in Data Science at the University of Luxembourg, working across data analytics, machine learning, and applied AI. I build end-to-end projects that turn messy data into something usable: forecasts, dashboards, model evaluation reports, RAG assistants, and decision-support tools. My current work sits around credit risk analytics, time-series forecasting, NLP, generative AI, and research-grade temporal imputation.</p>
+              <p class="bio-copy">I build forecasting models, risk dashboards, and AI-assisted tools that turn raw data into decisions people can act on.</p>
+              <p class="bio-copy">Master's student in Data Science at the University of Luxembourg. I specialize in <strong>time-series forecasting</strong> and <strong>credit risk analytics</strong>, build <strong>RAG-based AI assistants</strong>, and work end-to-end from feature engineering and model evaluation in <strong>Python and SQL</strong> to decision dashboards in <strong>Streamlit and Power BI</strong>.</p>
+              <p class="bio-copy">My recent work spans a credit risk decisioning system with PD modelling and policy simulation, an AAPL returns forecasting pipeline benchmarked against classical and deep-learning baselines, and FinBERT-based sentiment analysis on financial news. I'm currently a Research Assistant working on temporal imputation for satellite sensor data, alongside ongoing internship search across Luxembourg.</p>
             </div>
 
             <div class="about-links" aria-label="Professional links">
@@ -1450,298 +1317,111 @@
           <p class="section-lead">I work across the full data and AI workflow: understanding the problem, cleaning and validating data, building features, training and evaluating models, and turning results into dashboards, reports, or AI-assisted tools that people can actually use.</p>
         </div>
 
-        <div class="skill-preview-a-grid" aria-label="Technical skills grouped by category">
-          <article class="skill-preview-a-card">
-            <div class="skill-preview-a-head">
-              <span class="skill-preview-a-icon" aria-hidden="true">&lt;/&gt;</span>
+        <div class="skills-matrix-grid" aria-label="Technical skills grouped by category">
+          <article class="skill-cat-card">
+            <div class="skill-cat-head">
+              <span class="skill-cat-icon" aria-hidden="true">&lt;/&gt;</span>
               <div>
-                <h3>Programming &amp; Databases</h3>
-                <p class="skill-preview-a-kicker">Core technical stack</p>
+                <h3>Programming &amp; Data</h3>
+                <p class="skill-cat-kicker">Core languages &amp; storage</p>
               </div>
             </div>
-
-            <div class="skill-preview-a-list">
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Python</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 92%;"></div></div>
-                <p class="skill-preview-a-note">Primary language for modelling, analysis, and dashboards.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">SQL</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
-                <p class="skill-preview-a-note">KPI marts, reporting views, joins, and analytics queries.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">R</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
-                <p class="skill-preview-a-note">Statistics, visualization, and coursework-based analysis.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">DuckDB</span><span class="skill-preview-a-level">Working</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 74%;"></div></div>
-                <p class="skill-preview-a-note">Local analytics warehouse and SQL-backed workflows.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">MongoDB / Neo4j</span><span class="skill-preview-a-level">Working</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 72%;"></div></div>
-                <p class="skill-preview-a-note">NoSQL databases and graph-oriented data modelling.</p>
-              </div>
+            <div class="skill-chip-list">
+              <span class="skill-chip">Python</span>
+              <span class="skill-chip">SQL</span>
+              <span class="skill-chip">R</span>
+              <span class="skill-chip">DuckDB</span>
+              <span class="skill-chip">MongoDB</span>
+              <span class="skill-chip">Neo4j</span>
             </div>
           </article>
 
-          <article class="skill-preview-a-card">
-            <div class="skill-preview-a-head">
-              <span class="skill-preview-a-icon" aria-hidden="true">LLM</span>
+          <article class="skill-cat-card">
+            <div class="skill-cat-head">
+              <span class="skill-cat-icon" aria-hidden="true">AI</span>
+              <div>
+                <h3>Machine Learning &amp; Deep Learning</h3>
+                <p class="skill-cat-kicker">Predictive modelling</p>
+              </div>
+            </div>
+            <div class="skill-chip-list">
+              <span class="skill-chip">Scikit-learn</span>
+              <span class="skill-chip">PyTorch</span>
+              <span class="skill-chip">TensorFlow</span>
+              <span class="skill-chip">XGBoost</span>
+              <span class="skill-chip">LightGBM</span>
+              <span class="skill-chip">NLP / Transformers</span>
+            </div>
+          </article>
+
+          <article class="skill-cat-card">
+            <div class="skill-cat-head">
+              <span class="skill-cat-icon" aria-hidden="true">∑</span>
+              <div>
+                <h3>Statistics &amp; Forecasting</h3>
+                <p class="skill-cat-kicker">Quantitative methods</p>
+              </div>
+            </div>
+            <div class="skill-chip-list">
+              <span class="skill-chip">Probability &amp; Statistics</span>
+              <span class="skill-chip">Feature Engineering / PCA</span>
+              <span class="skill-chip">Backtesting</span>
+              <span class="skill-chip">ARIMA / ARIMAX</span>
+              <span class="skill-chip">Holt-Winters</span>
+              <span class="skill-chip">LSTM / GRU</span>
+            </div>
+          </article>
+
+          <article class="skill-cat-card">
+            <div class="skill-cat-head">
+              <span class="skill-cat-icon" aria-hidden="true">LLM</span>
               <div>
                 <h3>Generative AI &amp; LLM Systems</h3>
-                <p class="skill-preview-a-kicker">RAG and AI assistants</p>
+                <p class="skill-cat-kicker">RAG and AI assistants</p>
               </div>
             </div>
-
-            <div class="skill-preview-a-list">
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">RAG Pipelines</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 86%;"></div></div>
-                <p class="skill-preview-a-note">Document ingestion, chunking, retrieval, and grounded responses.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Embeddings / Vector Search</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 84%;"></div></div>
-                <p class="skill-preview-a-note">SentenceTransformers, FAISS, and semantic search workflows.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">LLM APIs / Inference</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 82%;"></div></div>
-                <p class="skill-preview-a-note">Groq API, Llama-family models, and fast AI prototyping.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Prompt Engineering</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 84%;"></div></div>
-                <p class="skill-preview-a-note">Structured prompts, checklists, and source-grounded answers.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">LLM Foundations</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
-                <p class="skill-preview-a-note">GPT-style transformers and LLM from scratch coursework.</p>
-              </div>
+            <div class="skill-chip-list">
+              <span class="skill-chip">RAG Pipelines</span>
+              <span class="skill-chip">Embeddings / Vector Search</span>
+              <span class="skill-chip">FAISS</span>
+              <span class="skill-chip">LLM APIs / Inference</span>
+              <span class="skill-chip">Prompt Engineering</span>
+              <span class="skill-chip">LangChain</span>
             </div>
           </article>
 
-          <article class="skill-preview-a-card">
-            <div class="skill-preview-a-head">
-              <span class="skill-preview-a-icon" aria-hidden="true">AI</span>
-              <div>
-                <h3>Machine Learning &amp; AI</h3>
-                <p class="skill-preview-a-kicker">Predictive modelling</p>
-              </div>
-            </div>
-
-            <div class="skill-preview-a-list">
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Scikit-learn</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 90%;"></div></div>
-                <p class="skill-preview-a-note">Classical ML, evaluation, preprocessing, and pipelines.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">PyTorch</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 86%;"></div></div>
-                <p class="skill-preview-a-note">Deep learning models, sequence models, and research workflows.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">XGBoost / LightGBM</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
-                <p class="skill-preview-a-note">Boosted-tree baselines and tabular modelling.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">TensorFlow</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
-                <p class="skill-preview-a-note">Deep learning framework familiarity and applied coursework.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">NLP / Transformers</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
-                <p class="skill-preview-a-note">FinBERT, Hugging Face workflows, and sentiment modelling.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="skill-preview-a-card">
-            <div class="skill-preview-a-head">
-              <span class="skill-preview-a-icon" aria-hidden="true">∑</span>
-              <div>
-                <h3>Statistics, Forecasting &amp; Modelling</h3>
-                <p class="skill-preview-a-kicker">Quantitative methods</p>
-              </div>
-            </div>
-
-            <div class="skill-preview-a-list">
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Probability &amp; Statistics</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 90%;"></div></div>
-                <p class="skill-preview-a-note">Core statistical reasoning and model interpretation.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Feature Engineering / PCA</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
-                <p class="skill-preview-a-note">Lag, rolling, calendar, exogenous features, and dimensionality reduction.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Forecast Evaluation / Backtesting</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 86%;"></div></div>
-                <p class="skill-preview-a-note">Time-based validation, leakage control, and forecast comparison.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">ARIMA / ARIMAX / Holt-Winters</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
-                <p class="skill-preview-a-note">Classical time-series forecasting and validation-based tuning.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">LSTM / GRU</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
-                <p class="skill-preview-a-note">Deep sequence models for time-series forecasting workflows.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="skill-preview-a-card">
-            <div class="skill-preview-a-head">
-              <span class="skill-preview-a-icon" aria-hidden="true">↗</span>
+          <article class="skill-cat-card">
+            <div class="skill-cat-head">
+              <span class="skill-cat-icon" aria-hidden="true">↗</span>
               <div>
                 <h3>Data Analysis &amp; Visualization</h3>
-                <p class="skill-preview-a-kicker">Exploration to insight</p>
+                <p class="skill-cat-kicker">Exploration to insight</p>
               </div>
             </div>
-
-            <div class="skill-preview-a-list">
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Pandas / NumPy</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 92%;"></div></div>
-                <p class="skill-preview-a-note">Data cleaning, transformation, aggregation, and analysis.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Matplotlib / Seaborn</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
-                <p class="skill-preview-a-note">Exploratory plots, diagnostics, and visual reporting.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Plotly / ggplot2</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
-                <p class="skill-preview-a-note">Interactive charts and grammar-of-graphics style visualization.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">SciPy / Tidyverse</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
-                <p class="skill-preview-a-note">Scientific computing and R-based data workflows.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Data Scraping / Data Storytelling</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
-                <p class="skill-preview-a-note">Collecting inputs and communicating insights clearly.</p>
-              </div>
+            <div class="skill-chip-list">
+              <span class="skill-chip">Pandas / NumPy</span>
+              <span class="skill-chip">Matplotlib / Seaborn</span>
+              <span class="skill-chip">Plotly / ggplot2</span>
+              <span class="skill-chip">SciPy / Tidyverse</span>
+              <span class="skill-chip">Data Storytelling</span>
             </div>
           </article>
 
-          <article class="skill-preview-a-card">
-            <div class="skill-preview-a-head">
-              <span class="skill-preview-a-icon" aria-hidden="true">{ }</span>
+          <article class="skill-cat-card">
+            <div class="skill-cat-head">
+              <span class="skill-cat-icon" aria-hidden="true">KPI</span>
               <div>
-                <h3>Development &amp; Deployment</h3>
-                <p class="skill-preview-a-kicker">Building usable outputs</p>
+                <h3>BI, Reporting &amp; Deployment</h3>
+                <p class="skill-cat-kicker">Business-facing outputs</p>
               </div>
             </div>
-
-            <div class="skill-preview-a-list">
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Git / GitHub</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 90%;"></div></div>
-                <p class="skill-preview-a-note">Version control, project organization, and reproducibility.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Streamlit</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
-                <p class="skill-preview-a-note">Interactive data science apps and project dashboards.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Docker</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
-                <p class="skill-preview-a-note">Containerized projects and reproducible environments.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Flask / FastAPI</span><span class="skill-preview-a-level">Working</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 74%;"></div></div>
-                <p class="skill-preview-a-note">Backend APIs and lightweight deployment foundations.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Jupyter / Quarto / Nix</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
-                <p class="skill-preview-a-note">Notebooks, reproducible reports, and development environments.</p>
-              </div>
-            </div>
-          </article>
-
-          <article class="skill-preview-a-card">
-            <div class="skill-preview-a-head">
-              <span class="skill-preview-a-icon" aria-hidden="true">KPI</span>
-              <div>
-                <h3>Analytics, BI &amp; Reporting</h3>
-                <p class="skill-preview-a-kicker">Business-facing analytics</p>
-              </div>
-            </div>
-
-            <div class="skill-preview-a-list">
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">KPI Reporting</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 90%;"></div></div>
-                <p class="skill-preview-a-note">Structured metrics for monitoring and decision support.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Dashboarding</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
-                <p class="skill-preview-a-note">Interactive reporting with Streamlit and BI-style layouts.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Data Quality Checks</span><span class="skill-preview-a-level">Advanced</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 88%;"></div></div>
-                <p class="skill-preview-a-note">Validation rules, consistency checks, and audit-friendly outputs.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Power BI</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 78%;"></div></div>
-                <p class="skill-preview-a-note">Business intelligence dashboards and stakeholder reporting.</p>
-              </div>
-
-              <div class="skill-preview-a-item">
-                <div class="skill-preview-a-top"><span class="skill-preview-a-name">Excel</span><span class="skill-preview-a-level">Strong</span></div>
-                <div class="skill-preview-a-bar"><div class="skill-preview-a-fill" style="width: 76%;"></div></div>
-                <p class="skill-preview-a-note">Analysis, reporting, and practical business workflows.</p>
-              </div>
+            <div class="skill-chip-list">
+              <span class="skill-chip">Power BI</span>
+              <span class="skill-chip">Excel</span>
+              <span class="skill-chip">Streamlit</span>
+              <span class="skill-chip">Docker</span>
+              <span class="skill-chip">Flask / FastAPI</span>
+              <span class="skill-chip">Git / GitHub</span>
             </div>
           </article>
         </div>
@@ -1752,84 +1432,207 @@
       <div class="section-inner">
         <div class="section-heading">
           <h2>Projects</h2>
-          <p class="section-lead">Selected projects showing practical work in generative AI, RAG systems, credit risk analytics, forecasting, business intelligence, NLP, and applied machine learning.</p>
+          <p class="section-lead">Selected projects showing practical work in credit risk analytics, forecasting, business intelligence, and applied machine learning.</p>
         </div>
 
         <div class="projects-grid">
-          <article class="project-card">
-            <button class="project-button" type="button" data-dialog-target="project-dialog-5">
-              <div class="project-header">
-                <div>
-                  <p class="project-title">Student Services RAG Assistant</p>
-                  <p class="project-subtitle">Generative AI / RAG System | May 2026 – Present</p>
-                </div>
-                <span class="tag">GenAI / RAG</span>
+
+          <article class="project-card" data-project-card>
+            <div class="project-header">
+              <div>
+                <p class="project-title">Credit Risk BI &amp; Decisioning Dashboard</p>
+                <p class="project-subtitle">Analytics Dashboard | Nov 2025 – Feb 2026</p>
               </div>
-              <p class="project-excerpt">API-powered RAG assistant for student-service and internship-related documents, using Llama-family models, embeddings, FAISS vector search, and context-grounded prompts.</p>
-              <div class="project-tags"><span class="skill-tag">Python</span><span class="skill-tag">Streamlit</span><span class="skill-tag">FAISS</span></div>
-              <span class="project-open">Click to view details</span>
-            </button>
+              <span class="tag">Analytics &amp; BI</span>
+            </div>
+            <p class="project-excerpt">Credit risk analytics system from ingestion to data-quality contracts, DuckDB warehousing, PD modelling, SQL KPI marts, and Streamlit decision dashboards.</p>
+            <div class="project-tags"><span class="skill-tag">Streamlit</span><span class="skill-tag">DuckDB</span><span class="skill-tag">Docker</span></div>
+
+            <div class="project-card-actions">
+              <button class="project-toggle" type="button" data-project-toggle aria-expanded="false">
+                <span data-toggle-label>Click to view more details</span>
+                <svg class="project-toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <a class="project-view-link" href="https://github.com/abhi-jith23/Credit-Risk-Dashboard" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+                </svg>
+                View Project
+              </a>
+            </div>
+
+            <div class="project-details" data-project-details>
+              <div class="stat-badges">
+                <span class="stat-badge">80% variance retained, 285→91 features</span>
+              </div>
+              <div class="project-detail-block">
+                <h4>Objective</h4>
+                <p>Create a practical credit risk analytics tool for underwriting, portfolio monitoring, probability-of-default scoring, and decision policy simulation.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Approach</h4>
+                <p>Designed a workflow from ingestion to data-quality contracts, DuckDB warehousing, PD modelling, SQL KPI marts, and Streamlit dashboards for model and business reporting.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Results</h4>
+                <p>Implemented model diagnostics including ROC/PR, calibration, Brier score, threshold analysis, and a simulator that converts PD into approve, review, and decline decisions under business constraints.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Tools Used</h4>
+                <p>Python, Streamlit, scikit-learn, DuckDB, SQL, Docker.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="project-card">
-            <button class="project-button" type="button" data-dialog-target="project-dialog-2">
-              <div class="project-header">
-                <div>
-                  <p class="project-title">Credit Risk BI &amp; Decisioning Dashboard</p>
-                  <p class="project-subtitle">Analytics Dashboard | Nov 2025 – Feb 2026</p>
-                </div>
-                <span class="tag">Analytics & BI</span>
+          <article class="project-card" data-project-card>
+            <div class="project-header">
+              <div>
+                <p class="project-title">Stocks Next-Day Returns Prediction</p>
+                <p class="project-subtitle">Time-Series Forecasting | Oct 2025 – Mar 2026</p>
               </div>
-              <p class="project-excerpt">Credit risk analytics system from ingestion to data-quality contracts, DuckDB warehousing, PD modelling, SQL KPI marts, and Streamlit decision dashboards.</p>
-              <div class="project-tags"><span class="skill-tag">Streamlit</span><span class="skill-tag">DuckDB</span><span class="skill-tag">Docker</span></div>
-              <span class="project-open">Click to view details</span>
-            </button>
+              <span class="tag">ML Forecasting</span>
+            </div>
+            <p class="project-excerpt">End-to-end AAPL forecasting pipeline using 2013–2026 market data, engineered features, train-only PCA, and LSTM-to-GRU modelling.</p>
+            <div class="project-tags"><span class="skill-tag">Python</span><span class="skill-tag">PyTorch</span><span class="skill-tag">Optuna</span></div>
+
+            <div class="project-card-actions">
+              <button class="project-toggle" type="button" data-project-toggle aria-expanded="false">
+                <span data-toggle-label>Click to view more details</span>
+                <svg class="project-toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <a class="project-view-link" href="https://github.com/abhi-jith23/StockReturnPrediction" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+                </svg>
+                View Project
+              </a>
+            </div>
+
+            <div class="project-details" data-project-details>
+              <div class="stat-badges">
+                <span class="stat-badge">80% variance retained, 285→91 features</span>
+              </div>
+              <div class="project-detail-block">
+                <h4>Objective</h4>
+                <p>Predict next-day AAPL log returns using daily market data while avoiding data leakage and preserving a realistic time-based modelling setup.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Approach</h4>
+                <p>Built an end-to-end pipeline using yfinance data from 2013–2026, engineered endogenous, exogenous, calendar, lag, and rolling features, then applied train-only StandardScaler and PCA, reducing 285 features to 91 components while retaining 80% variance.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Results</h4>
+                <p>Benchmarked against Naive, ARIMA, ARIMAX, and XGBoost baselines, then trained an LSTM-to-GRU model with Optuna-based hyperparameter search and structured evaluation reporting.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Tools Used</h4>
+                <p>Python, PyTorch, scikit-learn, yfinance, Optuna, PCA, LSTM, GRU.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="project-card">
-            <button class="project-button" type="button" data-dialog-target="project-dialog-1">
-              <div class="project-header">
-                <div>
-                  <p class="project-title">Stocks Next-Day Returns Prediction</p>
-                  <p class="project-subtitle">Time-Series Forecasting | Oct 2025 – Mar 2026</p>
-                </div>
-                <span class="tag">ML Forecasting</span>
+          <article class="project-card" data-project-card>
+            <div class="project-header">
+              <div>
+                <p class="project-title">NVDA News Sentiment Portfolio</p>
+                <p class="project-subtitle">Financial NLP | Oct 2025 – Dec 2025</p>
               </div>
-              <p class="project-excerpt">End-to-end AAPL forecasting pipeline using 2013–2026 market data, engineered features, train-only PCA, and LSTM-to-GRU modelling.</p>
-              <div class="project-tags"><span class="skill-tag">Python</span><span class="skill-tag">PyTorch</span><span class="skill-tag">Optuna</span></div>
-              <span class="project-open">Click to view details</span>
-            </button>
+              <span class="tag">NLP</span>
+            </div>
+            <p class="project-excerpt">Pipeline for collecting, de-duplicating, fine-tuning FinBERT on 300 labelled headlines, and aligning NVDA sentiment to return analysis.</p>
+            <div class="project-tags"><span class="skill-tag">FinBERT</span><span class="skill-tag">NewsAPI</span><span class="skill-tag">yfinance</span></div>
+
+            <div class="project-card-actions">
+              <button class="project-toggle" type="button" data-project-toggle aria-expanded="false">
+                <span data-toggle-label>Click to view more details</span>
+                <svg class="project-toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <a class="project-view-link" href="https://github.com/abhi-jith23/Stock-Portfolio-based-on-News-Sentiment" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+                </svg>
+                View Project
+              </a>
+            </div>
+
+            <div class="project-details" data-project-details>
+              <div class="stat-badges">
+                <span class="stat-badge">300 labelled headlines</span>
+              </div>
+              <div class="project-detail-block">
+                <h4>Objective</h4>
+                <p>Analyze whether NVDA news sentiment can be aligned with next-day and next-3-day stock returns for downstream financial analysis.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Approach</h4>
+                <p>Collected and de-duplicated headlines from NewsAPI and yfinance, fine-tuned FinBERT on a 300-headline investor-viewpoint dataset that was manually labelled, and aligned after-hours news to the next NASDAQ trading day.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Results</h4>
+                <p>Created daily sentiment features including mean sentiment and tail-negativity, then mapped them to next-day and next-3-day NVDA returns and abnormal returns for analysis.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Tools Used</h4>
+                <p>Python, Hugging Face Transformers, FinBERT, NewsAPI, yfinance.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="project-card">
-            <button class="project-button" type="button" data-dialog-target="project-dialog-4">
-              <div class="project-header">
-                <div>
-                  <p class="project-title">NVDA News Sentiment Portfolio</p>
-                  <p class="project-subtitle">Financial NLP | Oct 2025 – Dec 2025</p>
-                </div>
-                <span class="tag">NLP</span>
+          <article class="project-card" data-project-card>
+            <div class="project-header">
+              <div>
+                <p class="project-title">Walmart Weekly Sales Forecasting</p>
+                <p class="project-subtitle">Retail Forecasting | Dec 2025 – Feb 2026</p>
               </div>
-              <p class="project-excerpt">Pipeline for collecting, de-duplicating, fine-tuning FinBERT on 300 labelled headlines, and aligning NVDA sentiment to return analysis.</p>
-              <div class="project-tags"><span class="skill-tag">FinBERT</span><span class="skill-tag">NewsAPI</span><span class="skill-tag">yfinance</span></div>
-              <span class="project-open">Click to view details</span>
-            </button>
+              <span class="tag">Analytics &amp; Forecasting</span>
+            </div>
+            <p class="project-excerpt">Retail forecasting workflow evaluated with MAE, RMSE, and WAPE across 840 test points, comparing department-level and aggregate planning approaches.</p>
+            <div class="project-tags"><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span></div>
+
+            <div class="project-card-actions">
+              <button class="project-toggle" type="button" data-project-toggle aria-expanded="false">
+                <span data-toggle-label>Click to view more details</span>
+                <svg class="project-toggle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <a class="project-view-link" href="https://github.com/abhi-jith23/Time-Series-Forecast-for-Walmart-Data" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
+                </svg>
+                View Project
+              </a>
+            </div>
+
+            <div class="project-details" data-project-details>
+              <div class="stat-badges">
+                <span class="stat-badge">840 test points evaluated</span>
+              </div>
+              <div class="project-detail-block">
+                <h4>Objective</h4>
+                <p>Forecast weekly Walmart sales and compare department-level forecasting against an aggregate-forecast-deaggregate strategy.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Approach</h4>
+                <p>Cleaned and validated multi-year retail sales data, then implemented additive Holt-Winters forecasting from scratch with validation-based tuning across store and department time series.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Results</h4>
+                <p>Evaluated forecasts using MAE, RMSE, and WAPE across 840 test points, and modelled a rebate-contract scenario using horizon-2 forecasts and rolling bias correction to study KPI and accuracy trade-offs.</p>
+              </div>
+              <div class="project-detail-block">
+                <h4>Tools Used</h4>
+                <p>Python, Pandas, NumPy, Matplotlib, Jupyter Notebook.</p>
+              </div>
+            </div>
           </article>
 
-          <article class="project-card">
-            <button class="project-button" type="button" data-dialog-target="project-dialog-3">
-              <div class="project-header">
-                <div>
-                  <p class="project-title">Walmart Weekly Sales Forecasting</p>
-                  <p class="project-subtitle">Retail Forecasting | Dec 2025 – Feb 2026</p>
-                </div>
-                <span class="tag">Analytics & Forecasting</span>
-              </div>
-              <p class="project-excerpt">Retail forecasting workflow evaluated with MAE, RMSE, and WAPE across 840 test points, comparing department-level and aggregate planning approaches.</p>
-              <div class="project-tags"><span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Matplotlib</span></div>
-              <span class="project-open">Click to view details</span>
-            </button>
-          </article>
         </div>
       </div>
     </section>
@@ -1985,123 +1788,9 @@
 
   <p class="footer-note">© Abhijith Senthilkumar.</p>
 
-  <dialog id="project-dialog-1" aria-labelledby="project-dialog-title-1">
-    <div class="dialog-shell">
-      <div class="dialog-header">
-        <div><h3 id="project-dialog-title-1">Stocks Next-Day Returns Prediction</h3><div class="dialog-meta"><span class="tag">Time Series</span><span class="tag">Oct 2025 – Mar 2026</span></div></div>
-      </div>
-      <div class="dialog-grid">
-        <div class="dialog-panel"><h4>Objective</h4><p>Predict next-day AAPL log returns using daily market data while avoiding data leakage and preserving a realistic time-based modelling setup.</p></div>
-        <div class="dialog-panel"><h4>Approach</h4><p>Built an end-to-end pipeline using yfinance data from 2013–2026, engineered endogenous, exogenous, calendar, lag, and rolling features, then applied train-only StandardScaler and PCA, reducing 285 features to 91 components while retaining 80% variance.</p></div>
-        <div class="dialog-panel"><h4>Results</h4><p>Benchmarked against Naive, ARIMA, ARIMAX, and XGBoost baselines, then trained an LSTM-to-GRU model with Optuna-based hyperparameter search and structured evaluation reporting.</p></div>
-        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, PyTorch, scikit-learn, yfinance, Optuna, PCA, LSTM, GRU.</p></div>
-        <div class="dialog-panel">
-          <h4>Project Link</h4>
-          <a class="dialog-link" href="https://github.com/abhi-jith23/StockReturnPrediction" target="_blank" rel="noreferrer">
-            <svg class="inline-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
-            </svg>
-            View Project
-          </a>
-        </div>
-      </div>
-      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
-    </div>
-  </dialog>
-
-  <dialog id="project-dialog-2" aria-labelledby="project-dialog-title-2">
-    <div class="dialog-shell">
-      <div class="dialog-header">
-        <div><h3 id="project-dialog-title-2">Credit Risk BI &amp; Decisioning Dashboard</h3><div class="dialog-meta"><span class="tag">BI Dashboard</span><span class="tag">Nov 2025 – Feb 2026</span></div></div>
-      </div>
-      <div class="dialog-grid">
-        <div class="dialog-panel"><h4>Objective</h4><p>Create a practical credit risk analytics tool for underwriting, portfolio monitoring, probability-of-default scoring, and decision policy simulation.</p></div>
-        <div class="dialog-panel"><h4>Approach</h4><p>Designed a workflow from ingestion to data-quality contracts, DuckDB warehousing, PD modelling, SQL KPI marts, and Streamlit dashboards for model and business reporting.</p></div>
-        <div class="dialog-panel"><h4>Results</h4><p>Implemented model diagnostics including ROC/PR, calibration, Brier score, threshold analysis, and a simulator that converts PD into approve, review, and decline decisions under business constraints.</p></div>
-        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, Streamlit, scikit-learn, DuckDB, SQL, Docker.</p></div>
-        <div class="dialog-panel">
-          <h4>Project Link</h4>
-          <a class="dialog-link" href="https://github.com/abhi-jith23/Credit-Risk-Dashboard" target="_blank" rel="noreferrer">
-            <svg class="inline-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
-            </svg>
-            View Project
-          </a>
-        </div>
-      </div>
-      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
-    </div>
-  </dialog>
-
-  <dialog id="project-dialog-3" aria-labelledby="project-dialog-title-3">
-    <div class="dialog-shell">
-      <div class="dialog-header">
-        <div><h3 id="project-dialog-title-3">Walmart Weekly Sales Forecasting</h3><div class="dialog-meta"><span class="tag">Retail Forecasting</span><span class="tag">Dec 2025 – Feb 2026</span></div></div>
-      </div>
-      <div class="dialog-grid">
-        <div class="dialog-panel"><h4>Objective</h4><p>Forecast weekly Walmart sales and compare department-level forecasting against an aggregate-forecast-deaggregate strategy.</p></div>
-        <div class="dialog-panel"><h4>Approach</h4><p>Cleaned and validated multi-year retail sales data, then implemented additive Holt-Winters forecasting from scratch with validation-based tuning across store and department time series.</p></div>
-        <div class="dialog-panel"><h4>Results</h4><p>Evaluated forecasts using MAE, RMSE, and WAPE across 840 test points, and modelled a rebate-contract scenario using horizon-2 forecasts and rolling bias correction to study KPI and accuracy trade-offs.</p></div>
-        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, Pandas, NumPy, Matplotlib, Jupyter Notebook.</p></div>
-        <div class="dialog-panel">
-          <h4>Project Link</h4>
-          <a class="dialog-link" href="https://github.com/abhi-jith23/Time-Series-Forecast-for-Walmart-Data" target="_blank" rel="noreferrer">
-            <svg class="inline-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
-            </svg>
-            View Project
-          </a>
-        </div>
-      </div>
-      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
-    </div>
-  </dialog>
-
-  <dialog id="project-dialog-4" aria-labelledby="project-dialog-title-4">
-    <div class="dialog-shell">
-      <div class="dialog-header">
-        <div><h3 id="project-dialog-title-4">NVDA News Sentiment Portfolio</h3><div class="dialog-meta"><span class="tag">Financial NLP</span><span class="tag">Oct 2025 – Dec 2025</span></div></div>
-      </div>
-      <div class="dialog-grid">
-        <div class="dialog-panel"><h4>Objective</h4><p>Analyze whether NVDA news sentiment can be aligned with next-day and next-3-day stock returns for downstream financial analysis.</p></div>
-        <div class="dialog-panel"><h4>Approach</h4><p>Collected and de-duplicated headlines from NewsAPI and yfinance, fine-tuned FinBERT on a 300-headline investor-viewpoint dataset that was manually labelled, and aligned after-hours news to the next NASDAQ trading day.</p></div>
-        <div class="dialog-panel"><h4>Results</h4><p>Created daily sentiment features including mean sentiment and tail-negativity, then mapped them to next-day and next-3-day NVDA returns and abnormal returns for analysis.</p></div>
-        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, Hugging Face Transformers, FinBERT, NewsAPI, yfinance.</p></div>
-        <div class="dialog-panel">
-          <h4>Project Link</h4>
-          <a class="dialog-link" href="https://github.com/abhi-jith23/Stock-Portfolio-based-on-News-Sentiment" target="_blank" rel="noreferrer">
-            <svg class="inline-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.09.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.62-3.37-1.22-3.37-1.22-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.93.85.09-.66.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.91c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.59.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/>
-            </svg>
-            View Project
-          </a>
-        </div>
-      </div>
-      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
-    </div>
-  </dialog>
-
-  <dialog id="project-dialog-5" aria-labelledby="project-dialog-title-5">
-    <div class="dialog-shell">
-      <div class="dialog-header">
-        <div><h3 id="project-dialog-title-5">Student Services RAG Assistant</h3><div class="dialog-meta"><span class="tag">Generative AI</span><span class="tag">May 2026 – Present</span></div></div>
-      </div>
-      <div class="dialog-grid">
-        <div class="dialog-panel"><h4>Objective</h4><p>Build a practical AI assistant that can answer student-service and internship-related questions from internal documents, producing concise explanations and checklists instead of generic chatbot answers.</p></div>
-        <div class="dialog-panel"><h4>Approach</h4><p>Implemented document ingestion, chunking, sentence-transformer embeddings, FAISS vector search, and context-grounded prompt templates. Used open-source Llama-family models through the Groq API for fast LLM inference.</p></div>
-        <div class="dialog-panel"><h4>Results</h4><p>Created a working prototype for internal knowledge support and repetitive administrative workflows, designed to answer procedural questions using retrieved context rather than unsupported generation.</p></div>
-        <div class="dialog-panel"><h4>Tools Used</h4><p>Python, Streamlit, Groq API, Llama, SentenceTransformers, FAISS, LangChain, prompt engineering, embeddings, vector search.</p></div>
-      </div>
-      <div class="dialog-actions"><button class="close-btn" type="button" data-close-dialog>Close</button></div>
-    </div>
-  </dialog>
-
   <script>
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('main section[id]');
-    const skillItems = document.querySelectorAll('.skill-item');
-    const dialogTriggers = document.querySelectorAll('[data-dialog-target]');
-    const closeDialogButtons = document.querySelectorAll('[data-close-dialog]');
     const menuToggle = document.querySelector('.menu-toggle');
     const primaryNavigation = document.getElementById('primary-navigation');
 
@@ -2111,16 +1800,6 @@
       menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
       primaryNavigation.classList.toggle('is-open', isOpen);
     }
-
-    skillItems.forEach((item) => {
-      const fill = item.querySelector('.skill-fill');
-      const level = item.dataset.level;
-      if (fill && level) {
-        requestAnimationFrame(() => {
-          fill.style.width = `${level}%`;
-        });
-      }
-    });
 
     function setActiveNavLink() {
       const navOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height'), 10) || 58;
@@ -2167,29 +1846,18 @@
       });
     }
 
-    dialogTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        const dialogId = trigger.getAttribute('data-dialog-target');
-        const dialog = document.getElementById(dialogId);
-        if (dialog) dialog.showModal();
+    // Accordion-style project cards
+    document.querySelectorAll('[data-project-card]').forEach((card) => {
+      const toggleBtn = card.querySelector('[data-project-toggle]');
+      const label = card.querySelector('[data-toggle-label]');
+      if (!toggleBtn || !label) return;
+
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = card.classList.toggle('is-open');
+        toggleBtn.setAttribute('aria-expanded', String(isOpen));
+        label.textContent = isOpen ? 'Hide details' : 'Click to view more details';
       });
     });
-
-    closeDialogButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        button.closest('dialog')?.close();
-      });
-    });
-
-    document.querySelectorAll('dialog').forEach((dialog) => {
-      dialog.addEventListener('click', (event) => {
-        const rect = dialog.getBoundingClientRect();
-        const clickedInside = rect.top <= event.clientY && event.clientY <= rect.top + rect.height && rect.left <= event.clientX && event.clientX <= rect.left + rect.width;
-        if (!clickedInside) dialog.close();
-      });
-    });
- 
-
   </script>
 </body>
 </html>
